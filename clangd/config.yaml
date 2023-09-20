@@ -1,0 +1,2 @@
+CompileFlags:                     # Tweak the parse settings
+  Add: ['-std=c++17', '-O2', '-g', '-Wall', '-Wextra', '-pedantic', '-Wshadow', '-Wformat=2', '-Wfloat-equal', '-Wconversion', '-Wlogical-op', '-Wshift-overflow=2', '-Wduplicated-cond', '-Wno-unused-variable', '-Wcast-qual', '-Wcast-align', '-Wno-unused-result', '-Wno-sign-conversion', '-D_GLIBCXX_DEBUG', '-DLOCAL']
