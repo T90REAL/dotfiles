@@ -49,8 +49,6 @@ return {
             -- vim.o.background = "dark"
         end,
     },
-    {
-    },
     -- rose-pine-dawn
     {
         'rose-pine/neovim',
@@ -161,11 +159,13 @@ return {
 
             -- Set colorscheme after options
             -- vim.cmd('colorscheme rose-pine-dawn')
-            vim.o.background = 'light' -- or 'light'
-            vim.cmd('colorscheme solarized')
+            -- vim.cmd('colorscheme solarized')
             -- vim.cmd('colorscheme slate')
-            vim.cmd('set cursorline')
-            vim.cmd('set cursorcolumn')
+
+            -- set highlight for line and column
+            -- vim.cmd('set cursorline')
+            -- vim.cmd('set cursorcolumn')
+
             -- vim.cmd('colorscheme distilled')
             -- vim.cmd('colorscheme deus')
             -- block cursor
@@ -200,15 +200,19 @@ return {
         'karoliskoncevicius/distilled-vim'
     },
     {
-        'maxmx03/solarized.nvim',
-        config = function()
-            vim.o.background = 'light' -- or 'light'
-        end,
-    },
-    {
         'Mofiqul/vscode.nvim',
         -- config = function()
         --     vim.cmd('colorscheme vscode')
         -- end
+    },
+    {
+        -- 'altercation/vim-colors-solarized',
+        'lifepillar/vim-solarized8',
+        config = function()
+            vim.opt.background = 'light'
+            vim.cmd('highlight! link SignColumn LineNr')
+            vim.cmd('highlight NonText ctermfg=10 cterm=NONE')
+            vim.cmd('colorscheme solarized8')
+        end
     },
 }

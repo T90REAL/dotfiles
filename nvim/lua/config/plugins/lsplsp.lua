@@ -36,7 +36,7 @@ return {
             end
 
             require("lspconfig").clangd.setup {
-                capabilities = capabilities,
+                -- capabilities = capabilities,
                 cmd = {
                     "clangd",
                     "-header-insertion=never"
