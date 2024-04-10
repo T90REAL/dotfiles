@@ -23,6 +23,9 @@ return {
 
     },
     {
+        'ofirgall/ofirkai.nvim'
+    },
+    {
         'kaiuri/nvim-juliana',
         -- config = function()
             -- vim.cmd('colorscheme juliana')
@@ -50,7 +53,7 @@ return {
     },
     -- rose-pine-dawn
     {
-        'rose-pine/neovim', 
+        'rose-pine/neovim',
         name = 'rose-pine',
         config = function()
             require('rose-pine').setup({
@@ -99,19 +102,27 @@ return {
                 -- https://github.com/rose-pine/neovim/wiki/Recipes
                 highlight_groups = {
                     MatchParen = { bg = '#808B96' },
-                    CursorLine = { bg = 'foam', blend = 10 },
+                    -- CursorLine = { bg = 'foam', blend = 10 },
+                    -- CursorColumn = { fg = 'text', bg = 'text' },-- {{{}}}
+                    LineNr = { bg = '#f2e9e1' },
                     StatusLine = { fg = 'love', bg = 'love', blend = 10 },
                     NonText = { fg = 'text' },
-                    Keyword = { fg = 'text'},
                     -- Define = { fg = '#E74C3C' },
-                    Macro = { fg = '#E74C3C' },
-                    Conditional = { fg = 'text' },
+                    -- Macro = { fg = '#E74C3C' },
+                    Number = { fg = '#E74C3C', bold = false },
+                    SpecialChar = {fg = '#E74C3C'},
+                    Macro = { fg = 'gold' },
+                    Keyword = { fg = 'text' },
+                    Conditional = { fg = 'gold' },
                     PreCondit = { fg = '#E74C3C' },
-                    Visual = {fg = '#FBFCFC', bg = 'grey40'},
-                    Folded = { fg = 'text', bg = '#F6DDCC', bold = true, underline = true },
+                    Visual = { fg = '#FBFCFC', bg = 'grey40'},
+                    -- VisualNOS = { bg = 'gold' },
+                    -- Folded = { fg = 'text', bg = '#F6DDCC', bold = true, underline = true },
+                    -- FoldColumn = { fg = 'gold' },
+                    Folded = { fg = '#ECF0F1', bg = '#93a1a1', bold = true, underline = false },
                     Normal = {fg = 'text'},
                     Label = {fg = 'text'},
-                    Repeat = {fg = 'text'},
+                    Repeat = {fg = 'gold'},
                     Tag = {fg = 'text'},
                     Identifier = {fg = 'text'},
                     Statement = {fg = 'text'},
@@ -119,10 +130,11 @@ return {
                     StorageClass = {fg = 'text'},
                     Function = {fg = 'text'},
                     Structure = {fg = 'text'},
+                    -- Structure = {fg = 'gold', bold=true},
+                    -- Structure = {fg = 'gold'},
                     Boolean = {fg = 'text'},
                     Include = {fg = '#E74C3C'},
                     Special = {fg = 'text'},
-                    SpecialChar = {fg = 'gold'},
                     Debug = {fg = 'text'},
                     ['@constant.builtin'] = { fg = 'text' },
                     ['@function.builtin'] = { fg = 'text' },
@@ -144,28 +156,28 @@ return {
                     ['CmpItemKindVariable'] = { fg = 'text' },
 
                     -- Tag = {fg = 'text'},
-                    -- CursorColumn = { fg = 'text', bg = 'text' }
                 }
             })
 
             -- Set colorscheme after options
-            vim.cmd('colorscheme rose-pine')
+            -- vim.cmd('colorscheme rose-pine-dawn')
+            vim.o.background = 'light' -- or 'light'
+            vim.cmd('colorscheme solarized')
+            -- vim.cmd('colorscheme slate')
+            vim.cmd('set cursorline')
+            vim.cmd('set cursorcolumn')
+            -- vim.cmd('colorscheme distilled')
+            -- vim.cmd('colorscheme deus')
+            -- block cursor
+            -- vim.cmd('set guicursor=n-v-c-i:block')
             -- vim.cmd("autocmd VimEnter * highlight Visual cterm=NONE ctermbg=0 ctermfg=cyan guibg=Grey40")
         end
     },
     {
-        'maxmx03/fluoromachine.nvim',
-        -- config = function ()
-        --     local fm = require 'fluoromachine'
-        --
-        --     fm.setup {
-        --         glow = false,
-        --         theme = 'delta'
-        --     }
-        --
-        --     vim.opt.termguicolors = true
-            -- vim.cmd.colorscheme 'fluoromachine'
-        --end
+        'danishprakash/vim-yami'
+    },
+    {
+        'robertmeta/nofrils'
     },
     {
         'shaunsingh/moonlight.nvim',
@@ -177,6 +189,21 @@ return {
     },
     {
         "kyazdani42/blue-moon"
+    },
+    {
+        "andreasvc/vim-256noir"
+    },
+    {
+        'Yazeed1s/oh-lucy.nvim'
+    },
+    {
+        'karoliskoncevicius/distilled-vim'
+    },
+    {
+        'maxmx03/solarized.nvim',
+        config = function()
+            vim.o.background = 'light' -- or 'light'
+        end,
     },
     {
         'Mofiqul/vscode.nvim',

@@ -1,7 +1,7 @@
 vim.diagnostic.config({
-  virtual_text = false,
+  virtual_text = true,
   signs = false,
-  underline = true,
+  underline = false,
   update_in_insert = true,
   severity_sort = false,
 })
@@ -20,15 +20,15 @@ return {
         config = function()
             vim.lsp.set_log_level("off")
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "clangd", "jdtls", "quick_lint_js", "pylsp", "bashls"},
+                ensure_installed = { "lua_ls", "clangd", "pyright"},
                 -- automatic_installation = true,
             })
 
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
             local lspconfig = require('lspconfig')
 
-            -- local servers = { "lua_ls", "clangd", "jdtls", "quick_lint_js", "pylsp", "bashls"}
-            local servers = { "lua_ls", "clangd", "jdtls", "quick_lint_js", "pyright", "bashls"}
+            -- local servers = { "lua_ls", "clangd", "pyright"}
+            local servers = { "lua_ls", "pyright"}
             for _, lsp in ipairs(servers) do
                 lspconfig[lsp].setup {
                     capabilities = capabilities,
@@ -40,6 +40,21 @@ return {
                 cmd = {
                     "clangd",
                     "-header-insertion=never"
+                }
+            }
+
+            require("lspconfig").pyright.setup {
+                capabilities = capabilities,
+                settings = {
+                    python = {
+                        analysis = {
+                            useLibraryCodeForTypes = true,
+                            diagnosticSeverityOverrides = {
+                                reportUnusedVariable = "warning", -- or anything
+                                reportUnboundVariable = 'none',
+                            },
+                        }
+                    }
                 }
             }
 

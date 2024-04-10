@@ -2,7 +2,8 @@ return {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
     config = function() 
-        require('nvim-autopairs').setup({
+        local npairs = require("nvim-autopairs")
+        npairs.setup({
             disable_filetype = { "TelescopePrompt", "spectre_panel" },
             disable_in_macro = false,  -- disable when recording or executing a macro
             disable_in_visualblock = false, -- disable when insert after visual block mode
@@ -19,6 +20,26 @@ return {
             map_bs = true,  -- map the <BS> key
             map_c_h = false,  -- Map the <C-h> key to delete a pair
             map_c_w = false, -- map <c-w> to delete a pair if possible
+            fast_wrap = {
+                map = '<M-e>',
+                chars = { '{', '[', '(', '"', "'" },
+                pattern = [=[[%'%"%>%]%)%}%,]]=],
+                end_key = '$',
+                before_key = 'h',
+                after_key = 'l',
+                cursor_pos_before = true,
+                keys = 'qwertyuiopzxcvbnmasdfghjkl',
+                manual_position = true,
+                highlight = 'Search',
+                highlight_grey='Comment'
+            },
         })
+        npairs.remove_rule('(')
+        npairs.remove_rule('[')
+
+        local Rule = require('nvim-autopairs.rule')
+
+        -- npairs.add_rule(Rule("$","$","markdown"))
+        -- npairs.add_rule(Rule("*","*","markdown"))
     end
 }
